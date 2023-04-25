@@ -11,7 +11,7 @@ mock = [
 
 def test_encrypt_message():
     for m, k, r in mock:
-        result = encrypt_message(m , k)
+        result = encrypt_message(m, k)
         assert r == result
 
     with pytest.raises(
