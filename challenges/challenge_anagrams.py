@@ -1,21 +1,24 @@
 def merge_sort(word):
     if len(word) < 2:
         return word
-    result = []
+
     mid = int(len(word) / 2)
-    y = merge_sort(word[:mid])
-    z = merge_sort(word[mid:])
-    i = 0
-    j = 0
-    while i < len(y) and j < len(z):
-        if y[i] > z[j]:
-            result.append(z[j])
+
+    first_half = merge_sort(word[:mid])
+    second_half = merge_sort(word[mid:])
+
+    i, j = 0, 0
+    result = []
+
+    while i < len(first_half) and j < len(second_half):
+        if first_half[i] > second_half[j]:
+            result.append(second_half[j])
             j += 1
         else:
-            result.append(y[i])
+            result.append(first_half[i])
             i += 1
-    result += y[i:]
-    result += z[j:]
+    result += first_half[i:]
+    result += second_half[j:]
     return "".join(result)
 
 
